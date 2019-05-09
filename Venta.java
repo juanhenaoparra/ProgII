@@ -59,6 +59,10 @@ public class Venta {
         this.detallesVenta = detallesVenta;
     }
     
+    public void setDetalleVenta(DetalleVenta detalleVenta) {
+        detallesVenta.add(detalleVenta);
+    }
+    
     public Empleado getEmpleado() {
         return empleado;
     }

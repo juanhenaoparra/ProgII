@@ -37,9 +37,14 @@ public class MainTienda {
         fecha.set(2019, 05, 07);
         
         Venta v1 = new Venta("V01", fecha, c1, e1);  
-        ArrayList<DetalleVenta> dv1 = v1.getDetallesVenta();
-        dv1.add(new DetalleVenta(2, pd1));
-        dv1.add(new DetalleVenta(3, pd2));
+        
+//        ArrayList<DetalleVenta> dv1 = v1.getDetallesVenta();
+//        dv1.add(new DetalleVenta(2, pd1));
+//        dv1.add(new DetalleVenta(3, pd2));
+
+        v1.setDetalleVenta(new DetalleVenta(2, pd1));
+        v1.setDetalleVenta(new DetalleVenta(3, pd2));
+        
         // Proceder de forma similar para agregar unas 4 ventas más
         
         // Agregar las ventas creadas a una instancia de ArrayList
