@@ -1,4 +1,4 @@
-package prototipocaso1;
+package caso1;
 
 /**
  *

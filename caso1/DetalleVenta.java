@@ -1,16 +1,17 @@
-package prototipocaso1;
+package caso1;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author Usuario para clases
+ * @author Carlos Cuesta
  */
-public class DetalleCompra {
+public class DetalleVenta {
+
     private int cantidad;
     private ProductoDisponible productoDisponible;
 
-    public DetalleCompra(int cantidad, ProductoDisponible productoDisponible) {
+    public DetalleVenta(int cantidad, ProductoDisponible productoDisponible) {
         this.cantidad = cantidad;
         this.productoDisponible = productoDisponible;
     }
@@ -32,7 +33,7 @@ public class DetalleCompra {
     }
     
     public double getTotalLinea() {
-        return cantidad * productoDisponible.getPrecioCompra();
+        return cantidad * productoDisponible.getPrecioVenta();
     }
 
     @Override
@@ -40,7 +41,8 @@ public class DetalleCompra {
         Producto p = productoDisponible.getProducto();
         // nótese la diferencia al usar un método de instancia y uno de clase
         String nombreProducto = Util.rightPad(p.getNombre(), 30);
-        String precioCompra = String.format("%10.2f", productoDisponible.getPrecioCompra());
-        return cantidad + " - " + nombreProducto + precioCompra + "  " + String.format("%10.2f", getTotalLinea());
+        String precioVenta = String.format("%10.2f", productoDisponible.getPrecioVenta());
+        return cantidad + " - " + nombreProducto + precioVenta + "  " + String.format("%10.2f", getTotalLinea());
     }
+
 }

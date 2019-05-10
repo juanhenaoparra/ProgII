@@ -1,4 +1,4 @@
-package prototipocaso1;
+package caso1;
 
 import java.util.ArrayList;
 import java.util.Calendar;

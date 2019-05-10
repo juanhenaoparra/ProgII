@@ -1,14 +1,14 @@
-package prototipocaso1;
+package caso1;
 
 /**
  *
  * @author Usuario para clases
  */
-public class Fabricante {
+public class Tienda {
     private String nombre;
     private String direccion;
     
-    public Fabricante(String nombre, String direccion){
+    public Tienda(String nombre, String direccion){
         this.nombre = nombre;
         this.direccion = direccion;
     }
@@ -31,7 +31,7 @@ public class Fabricante {
     
     @Override
     public String toString(){
-        return "Fabricante {"
+        return "Tienda {"
                + "\n\tnombre: " + nombre
                + "\n\tdireccion: " + direccion
                + "\n\t}";
