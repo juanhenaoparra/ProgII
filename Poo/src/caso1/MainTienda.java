@@ -11,7 +11,7 @@ public class MainTienda {
 
     public static void main(String[] args) {
         
-        ArrayList<Venta> listaVentas = new ArrayList();
+        ArrayList<Venta> listaVentas;
         
         Fabricante f1 = new Fabricante("Pepsico", "Vda. Isla, Ceuta, Funza, Cundinamarca");
         Fabricante f2 = new Fabricante("Zenu", "Facatativa, Bogota D.C.");
@@ -27,6 +27,12 @@ public class MainTienda {
         Producto p7 = new Producto("PRD07", "Super Coco");
         Producto p8 = new Producto("PRD08", "Manzana 2L");
         Producto p9 = new Producto("PRD09", "Jugo Hit Mora");
+        
+        Producto temp = new Producto(p2.getCodigo(), p2.getNombre()); //¿? pq no funciona si se direcciona a temp = p2
+        p2.setCodigo(p1.getCodigo());
+        p2.setNombre(p1.getNombre());
+        p1.setCodigo(temp.getCodigo());
+        p1.setNombre(temp.getNombre());
         
         ProductoDisponible pd1 = new ProductoDisponible(50, f1, p1, 1000, 750);
         ProductoDisponible pd2 = new ProductoDisponible(30, f1, p2, 1200, 950);
