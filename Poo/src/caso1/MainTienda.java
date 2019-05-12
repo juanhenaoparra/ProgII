@@ -90,10 +90,10 @@ public class MainTienda {
         v3.setDetalleVenta(new DetalleVenta(6, pd6));
         v4.setDetalleVenta(new DetalleVenta(4, pd9));
         
-        listaVentas = VentasAdd(listaVentas, v1);
-        listaVentas = VentasAdd(listaVentas, v2);
-        listaVentas = VentasAdd(listaVentas, v3);
-        listaVentas = VentasAdd(listaVentas, v4);
+        listaVentas = ventasAdd(listaVentas, v1);
+        listaVentas = ventasAdd(listaVentas, v2);
+        listaVentas = ventasAdd(listaVentas, v3);
+        listaVentas = ventasAdd(listaVentas, v4);
         
         // Proceder de forma similar para agregar unas 4 ventas más
         
@@ -113,16 +113,19 @@ public class MainTienda {
         System.out.println(e1);
         System.out.println(e2);
         System.out.println(e12);
-        //System.out.println(v1);
-        for(Venta jd : listaVentas){
-            System.out.println(jd);
-        }
+        printVentas(listaVentas);
     }
     
-    public static ArrayList<Venta> VentasAdd(ArrayList<Venta> lv, Venta v){
+    public static ArrayList<Venta> ventasAdd(ArrayList<Venta> lv, Venta v){
         lv.add(v);
         
         return lv;
+    }
+    
+    public static void printVentas(ArrayList<Venta> lv){
+        for(Venta v : lv){
+            System.out.println(v);
+        }
     }
     
 }
