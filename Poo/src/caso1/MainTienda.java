@@ -11,6 +11,8 @@ public class MainTienda {
 
     public static void main(String[] args) {
         
+        ArrayList<Venta> listaVentas = new ArrayList();
+        
         Fabricante f1 = new Fabricante("Pepsico", "Vda. Isla, Ceuta, Funza, Cundinamarca");
         Fabricante f2 = new Fabricante("Zenu", "Facatativa, Bogota D.C.");
         Fabricante f3 = new Fabricante("Super Alimentos", "Manizales, Caldas");
@@ -71,14 +73,26 @@ public class MainTienda {
         Calendar fecha = Calendar.getInstance();
         fecha.set(2019, 05, 07);
         
-        Venta v1 = new Venta("V01", fecha, c1, e1);  
+        Venta v1 = new Venta("V01", fecha, c1, e1);
+        Venta v2 = new Venta("V02", fecha, c2, e10);
+        Venta v3 = new Venta("V03", fecha, c3, e13);
+        Venta v4 = new Venta("V04", fecha, c4, e9);
         
-		//ArrayList<DetalleVenta> dv1 = v1.getDetallesVenta();
-		//dv1.add(new DetalleVenta(2, pd1));
-		//dv1.add(new DetalleVenta(3, pd2));
+        //ArrayList<DetalleVenta> dv1 = v1.getDetallesVenta();
+        //dv1.add(new DetalleVenta(2, pd1));
+        //dv1.add(new DetalleVenta(3, pd2));
 
         v1.setDetalleVenta(new DetalleVenta(2, pd1));
         v1.setDetalleVenta(new DetalleVenta(3, pd2));
+        v2.setDetalleVenta(new DetalleVenta(3, pd4));
+        v2.setDetalleVenta(new DetalleVenta(8, pd5));
+        v3.setDetalleVenta(new DetalleVenta(6, pd6));
+        v4.setDetalleVenta(new DetalleVenta(4, pd9));
+        
+        listaVentas = VentasAdd(listaVentas, v1);
+        listaVentas = VentasAdd(listaVentas, v2);
+        listaVentas = VentasAdd(listaVentas, v3);
+        listaVentas = VentasAdd(listaVentas, v4);
         
         // Proceder de forma similar para agregar unas 4 ventas más
         
@@ -97,7 +111,16 @@ public class MainTienda {
         System.out.println(d1);
         System.out.println(e1);
         System.out.println(e2);
-        System.out.println(v1);
+        //System.out.println(v1);
+        for(Venta jd : listaVentas){
+            System.out.println(jd);
+        }
+    }
+    
+    public static ArrayList<Venta> VentasAdd(ArrayList<Venta> lv, Venta v){
+        lv.add(v);
+        
+        return lv;
     }
     
 }
