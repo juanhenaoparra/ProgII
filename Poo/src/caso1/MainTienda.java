@@ -39,6 +39,7 @@ public class MainTienda {
         ProductoDisponible pd9 = new ProductoDisponible(30, f4, p9, 1800, 1200);
         
         Tienda tienda = new Tienda("Makro", "Cra. 15 ##10-32, Dosquebradas, Risaralda");
+        Tienda tienda2 = new Tienda("Merko", "Cra. 09 ##05-35, Filadelfia, Caldas");
         
         Departamento d1 = new Departamento("Departamento de tecnología", tienda);
         Empleado e1 = new Empleado("EMP01", "Fernando Fernández", d1);
@@ -59,7 +60,7 @@ public class MainTienda {
         Empleado e10 = new Empleado("EMP10", "Paul Allen", d3);
         d3.setJefe(e8);
         
-        Departamento d4 = new Departamento("Departamento de marketing", tienda);
+        Departamento d4 = new Departamento("Departamento de marketing", tienda2);
         Empleado e11 = new Empleado("EMP11", "Benjamin Franklin", d4);
         Empleado e12 = new Empleado("EMP12", "Amanda Cerni", d4);
         Empleado e13 = new Empleado("EMP13", "Elon Musk", d4);
@@ -111,6 +112,7 @@ public class MainTienda {
         System.out.println(d1);
         System.out.println(e1);
         System.out.println(e2);
+        System.out.println(e12);
         //System.out.println(v1);
         for(Venta jd : listaVentas){
             System.out.println(jd);

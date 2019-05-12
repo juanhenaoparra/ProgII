@@ -9,11 +9,13 @@ public class Empleado {
     private String identificacion;
     private String nombre;
     private Departamento departamento;
+    private Tienda tienda;
 
     public Empleado(String identificacion, String nombre, Departamento departamento) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.departamento = departamento;
+        this.tienda = departamento.getTienda();
     }
 
     public String getIdentificacion() {
@@ -46,9 +48,7 @@ public class Empleado {
                 + "\n\tidentificacion: " + identificacion 
                 + "\n\tnombre: " + nombre 
                 + "\n\tdepartamento: " + departamento.getNombre()
+                + "\n\ttienda: " + tienda.getNombre()
                 + "\n}";
     }
-
-    
-    
 }
