@@ -84,10 +84,6 @@ public class MainTienda {
         Venta v2 = new Venta("V02", fecha, c2, e10);
         Venta v3 = new Venta("V03", fecha, c3, e13);
         Venta v4 = new Venta("V04", fecha, c4, e9);
-        
-        //ArrayList<DetalleVenta> dv1 = v1.getDetallesVenta();
-        //dv1.add(new DetalleVenta(2, pd1));
-        //dv1.add(new DetalleVenta(3, pd2));
 
         v1.setDetalleVenta(new DetalleVenta(2, pd1));
         v1.setDetalleVenta(new DetalleVenta(3, pd2));
@@ -97,12 +93,6 @@ public class MainTienda {
         v4.setDetalleVenta(new DetalleVenta(4, pd9));
         
         listaVentas = ventasAdd(v1, v2, v3, v4);
-        
-        // Proceder de forma similar para agregar unas 4 ventas más
-        
-        // Agregar las ventas creadas a una instancia de ArrayList
-        
-        // Mostrar el total de las ventas a partir de la información contenida en el ArrayList
         
         System.out.println(p1);
         System.out.println(p2);
