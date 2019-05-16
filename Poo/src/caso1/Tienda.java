@@ -7,8 +7,9 @@ package caso1;
 public class Tienda {
     private String nombre;
     private String direccion;
+    private String nit;
     
-    public Tienda(String nombre, String direccion){
+    public Tienda(String nombre, String direccion, String nit){
         this.nombre = nombre;
         this.direccion = direccion;
     }
@@ -27,6 +28,14 @@ public class Tienda {
     
     public void setDireccion(String direccion){
         this.direccion = direccion;
+    }
+    
+    public String getNit(){
+        return nit;
+    }
+    
+    public void setNit(String nit){
+        this.nit = nit;
     }
     
     @Override
