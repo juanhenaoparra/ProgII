@@ -44,8 +44,8 @@ public class MainTienda {
         ProductoDisponible pd8 = new ProductoDisponible(30, f4, p8, 2250, 1500);
         ProductoDisponible pd9 = new ProductoDisponible(30, f4, p9, 1800, 1200);
         
-        Tienda tienda = new Tienda("Makro", "Cra. 15 ##10-32, Dosquebradas, Risaralda");
-        Tienda tienda2 = new Tienda("Merko", "Cra. 09 ##05-35, Filadelfia, Caldas");
+        Tienda tienda = new Tienda("Makro", "Cra. 15 ##10-32, Dosquebradas, Risaralda", "980");
+        Tienda tienda2 = new Tienda("Merko", "Cra. 09 ##05-35, Filadelfia, Caldas", "981");
         
         Departamento d1 = new Departamento("Departamento de tecnología", tienda);
         Empleado e1 = new Empleado("EMP01", "Fernando Fernández", d1);
