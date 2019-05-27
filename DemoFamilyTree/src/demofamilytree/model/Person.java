@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package demofamilytree.model;
 
 /**
- *
  * @author parju
  */
 public class Person {
@@ -66,5 +60,21 @@ public class Person {
 
     public void setFather(Person Father) {
         this.Father = Father;
+    }
+    
+    public Person getPaternalGrandFather() {
+        return Father.getFather();
+    }
+
+    public Person getPaternalGrandMother() {
+        return Father.getMother();
+    }
+
+    public Person getMaternalGrandFather() {
+        return Mother.getFather();
+    }
+    
+    public Person getMaternalGrandMother() {
+        return Mother.getMother();
     }
 }
