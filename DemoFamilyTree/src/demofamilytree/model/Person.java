@@ -8,7 +8,6 @@ public class Person {
     public static final char SEX_MALE = 'M';
     public static final char SEX_FEMALE = 'F';
     
-    
     private String firstName = "";
     private String lastName = "";
     private char sex = '?';
@@ -18,6 +17,12 @@ public class Person {
     public Person(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+    
+    public Person(String firstName, String lastName, char sex){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
     }
     
     public String getFirstName() {
