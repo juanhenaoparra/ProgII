@@ -1,30 +1,32 @@
 package demofamilytree.model;
 
+import java.util.ArrayList;
+
 /**
  * @author parju
  */
 public class Person {
-    
+
     public static final char SEX_MALE = 'M';
     public static final char SEX_FEMALE = 'F';
-    
+
     private String firstName = "";
     private String lastName = "";
     private char sex = '?';
     private Person Mother = null;
     private Person Father = null;
 
-    public Person(String firstName, String lastName){
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    
-    public Person(String firstName, String lastName, char sex){
+
+    public Person(String firstName, String lastName, char sex) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
     }
-    
+
     public String getFirstName() {
         return firstName;
     }
@@ -32,7 +34,7 @@ public class Person {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    
+
     public String getLastName() {
         return lastName;
     }
@@ -48,13 +50,13 @@ public class Person {
     public void setSex(char newSex) {
         if (newSex == SEX_MALE || newSex == SEX_FEMALE) {
             this.sex = newSex;
-        }        
+        }
     }
 
     public Person getMother() {
         return Mother;
     }
-    
+
     public void setMother(Person Mother) {
         this.Mother = Mother;
     }
@@ -66,20 +68,40 @@ public class Person {
     public void setFather(Person Father) {
         this.Father = Father;
     }
-    
+
     public Person getPaternalGrandFather() {
-        return Father.getFather();
+        Person father = this.getFather();
+
+        if (father != null) {
+            return father.getFather();
+        }
+        return null;
     }
 
     public Person getPaternalGrandMother() {
-        return Father.getMother();
+        Person father = this.getFather();
+
+        if (father != null) {
+            return father.getMother();
+        }
+        return null;
     }
 
     public Person getMaternalGrandFather() {
-        return Mother.getFather();
+        Person mother = this.getMother();
+
+        if (mother != null) {
+            return mother.getFather();
+        }
+        return null;
     }
-    
+
     public Person getMaternalGrandMother() {
-        return Mother.getMother();
+        Person mother = this.getMother();
+
+        if (mother != null) {
+            return mother.getMother();
+        }
+        return null;
     }
 }
