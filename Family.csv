@@ -1,0 +1,17 @@
+id, firstName, lastName, sex, idFather, idMother
+116, "Eriberto", "Henao", "M", -1, -1
+115, "Bertha", "Aguirre", "F", -1, -1
+114, "Joaquin", "Posada", "M", -1, -1
+113, "Gabriela", "Londono", "F", -1, -1
+112, "Francisco", "Parra", "M", -1, -1
+111, "Mercedes", "-", "F", -1, -1
+110, "Carlos", "Giraldo", "M", -1, -1
+109, "Limbania", "Castillo", "F", -1, -1
+108, "Alberto", "Henao Aguirre", "M", 116, 115 
+107, "Elena", "Posada Londono", "F", 114, 113
+106, "Noraldo", "Parra", "M", 112, 111
+105, "Limbania", "Giraldo Castillo", "F", 110, 109
+104, "Hugo", "Henao Posada", "M", 108, 107
+103, "Maria", "Parra Giraldo", "F", 106, 105
+102, "Salome", "Henao Parra", "F", 104, 103
+101, "Juan", "Henao Parra", "M", 104, 103
