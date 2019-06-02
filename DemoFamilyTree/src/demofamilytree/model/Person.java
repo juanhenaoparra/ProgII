@@ -10,21 +10,35 @@ public class Person {
     public static final char SEX_MALE = 'M';
     public static final char SEX_FEMALE = 'F';
 
+    private Family family = null;
+    private int Id = 0;
     private String firstName = "";
     private String lastName = "";
     private char sex = '?';
     private Person Mother = null;
     private Person Father = null;
 
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Person(String firstName, String lastName, char sex) {
+    public Person(int Id, String firstName, String lastName, char sex) {
+        this.Id = Id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
+    }
+
+    public Person(Family family, int Id, String firstName, String lastName, char sex) {
+        this.family = family;
+        this.Id = Id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getFirstName() {
@@ -41,6 +55,10 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+    
+    public String getFullName(){
+        return firstName + " " + lastName;
     }
 
     public char getSex() {
@@ -103,5 +121,45 @@ public class Person {
             return mother.getMother();
         }
         return null;
+    }
+    
+    public ArrayList<Person> getBrothers(){
+        ArrayList<Person> brothers = new ArrayList();
+        ArrayList<Person> people = null;
+        
+        if(family != null && (Father != null || Mother != null)){
+            people = family.getPeople();
+            for (Person person : people) {
+                if(person != this){   
+                    if(person.getSex() == Person.SEX_MALE){
+                        if(this.getFather() == person.getFather() || this.getMother() == person.getMother()){
+                            brothers.add(person);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return brothers;
+    }
+    
+    public ArrayList<Person> getSisters(){
+        ArrayList<Person> sisters = new ArrayList();
+        ArrayList<Person> people = null;
+        
+        if(family != null && (Father != null || Mother != null)){
+            people = family.getPeople();
+            for (Person person : people) {
+                if(person != this){   
+                    if(person.getSex() == Person.SEX_FEMALE){
+                        if(this.getFather() == person.getFather() || this.getMother() == person.getMother()){
+                            sisters.add(person);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return sisters;
     }
 }

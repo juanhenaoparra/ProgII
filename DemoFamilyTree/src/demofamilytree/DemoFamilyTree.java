@@ -1,7 +1,9 @@
 package demofamilytree;
 
 import demofamilytree.model.Person;
+import demofamilytree.model.Family;
 import java.util.ArrayList;
+import cafsoft.foundation.Data;
 
 /**
  * @author parju
@@ -9,87 +11,73 @@ import java.util.ArrayList;
 public class DemoFamilyTree {
 
     public static void main(String[] args) {
-        Person[] people = new Person[8];
-        people[0] = new Person("Salome", "Henao Parra");
-        people[1] = new Person("Juan", "Henao Parra");
-        people[2] = new Person("Hugo", "Henao Posada");
-        people[3] = new Person("Maria", "Parra Giraldo");
-        people[4] = new Person("Alberto", "Henao Aguirre");
-        people[5] = new Person("Elena", "Posada Londoño");
-        people[6] = new Person("Noraldo", "Parra");
-        people[7] = new Person("Limbania", "Giraldo Castillo");
-
-        people[0].setFather(people[1]);
-        people[0].setMother(people[2]);
-        people[1].setFather(people[1]);
-        people[1].setMother(people[2]);
-
-        people[2].setFather(people[4]);
-        people[2].setMother(people[5]);
-
-        people[3].setFather(people[6]);
-        people[3].setMother(people[7]);
-
-        ArrayList<Person> Brothers;
+        Family family = new Family();
+        ArrayList<Person> people = new ArrayList<>();
+        Person person1 = null;
+        Person father = null;
+        Person mother = null;
         
-        System.out.println("Brother: ");
-        Brothers = getBrothers(people[0], people);
+        Data data = null;
+        String path = "C:\\Users\\parju\\Google Drive\\Prog 2\\ProgII\\Family.txt";
+        String text = "";
         
-        for (Person brother : Brothers) {
-            System.out.println(brother.getFirstName() + " " + brother.getLastName());
+        family.addPerson(new Person(family, 100, "Salome", "Henao Parra", Person.SEX_FEMALE));
+        family.addPerson(new Person(family, 101, "Juan", "Henao Parra", Person.SEX_MALE));
+        family.addPerson(new Person(family, 102, "Hugo", "Henao Posada", Person.SEX_MALE));
+        family.addPerson(new Person(family, 103, "Maria", "Parra Giraldo", Person.SEX_FEMALE));
+        family.addPerson(new Person(family, 104, "Alberto", "Henao Aguirre", Person.SEX_MALE));
+        family.addPerson(new Person(family, 105, "Elena", "Posada Londoño", Person.SEX_FEMALE));
+        family.addPerson(new Person(family, 106, "Noraldo", "Parra", Person.SEX_MALE));
+        family.addPerson(new Person(family, 107, "Limbania", "Giraldo Castillo", Person.SEX_FEMALE));
+        
+        people = family.getPeople();
+        
+        person1 = family.getPerson(100);
+        father = family.getPerson(102);
+        mother = family.getPerson(103);
+        
+        person1.setFather(father);
+        person1.setMother(mother);
+        
+        person1 = family.getPerson(101);
+        person1.setFather(father);
+        person1.setMother(mother);
+        
+        person1 = family.getPerson(100);
+        
+        for (Person brother : person1.getBrothers()) {
+            System.out.println("Hermano:" + brother.getFirstName());
         }
-
+        
         for (Person person : people) {
-            System.out.println("First Name: " + person.getFirstName());
-            System.out.println("Last Name: " + person.getLastName());
+            System.out.println("Name: " + person.getFullName());
             
             if (person.getFather() != null) {
                 System.out.println("    [Father] ");
-                System.out.println("        First Name: " + person.getFather().getFirstName());
-                System.out.println("        Last Name: " + person.getFather().getLastName());
+                System.out.println("        Name: " + person.getFather().getFullName());
                 if (person.getPaternalGrandFather() != null) {
                     System.out.println("        [Paternal GrandFather]");
-                    System.out.println("            First Name: " + person.getPaternalGrandFather().getFirstName());
-                    System.out.println("            Last Name: " + person.getPaternalGrandFather().getLastName());
+                    System.out.println("            Name: " + person.getPaternalGrandFather().getFullName());
                 }
                 if (person.getPaternalGrandMother() != null) {
                     System.out.println("        [Paternal GrandMother]");
-                    System.out.println("            First Name: " + person.getPaternalGrandMother().getFirstName());
-                    System.out.println("            Last Name: " + person.getPaternalGrandMother().getLastName());
+                    System.out.println("            Name: " + person.getPaternalGrandMother().getFullName());
                 }
             }
 
             if (person.getMother() != null) {
                 System.out.println("    [Mother] ");
-                System.out.println("        First Name: " + person.getMother().getFirstName());
-                System.out.println("        Last Name: " + person.getMother().getLastName());
+                System.out.println("        Name: " + person.getMother().getFullName());
                 if (person.getPaternalGrandFather() != null) {
                     System.out.println("        [Maternal GrandFather]");
-                    System.out.println("            First Name: " + person.getMaternalGrandFather().getFirstName());
-                    System.out.println("            Last Name: " + person.getMaternalGrandFather().getLastName());
+                    System.out.println("            Name: " + person.getMaternalGrandFather().getFullName());
                 }
                 if (person.getPaternalGrandMother() != null) {
                     System.out.println("        [Maternal GrandMother]");
-                    System.out.println("            First Name: " + person.getMaternalGrandMother().getFirstName());
-                    System.out.println("            Last Name: " + person.getMaternalGrandMother().getLastName());
+                    System.out.println("            Name: " + person.getMaternalGrandMother().getFullName());
                 }
             }
             System.out.println("");
         }
-
     }
-    
-    public static ArrayList<Person> getBrothers(Person person, Person[] people){
-        ArrayList<Person> Brothers = new ArrayList<>();
-        Brothers.add(person);
-        
-        for (int i = 0; i < people.length - 1; i++) {
-            if (people[i].getFather() == people[i + 1].getFather()) {
-                Brothers.add(people[i + 1]);
-            }
-        }
-        
-        return Brothers;
-    }
-
 }
