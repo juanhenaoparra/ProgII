@@ -13,7 +13,9 @@ public class DemoFamilyTree {
     public static void main(String[] args) {
         Family family = new Family();
         ArrayList<Person> people = new ArrayList<>();
-        Person person1 = null;
+        ArrayList<Person> brothers = null;
+        ArrayList<Person> sisters = null;
+        Person per = null;
         Person father = null;
         Person mother = null;
         
@@ -32,22 +34,16 @@ public class DemoFamilyTree {
         
         people = family.getPeople();
         
-        person1 = family.getPerson(100);
+        per = family.getPerson(100);
         father = family.getPerson(102);
         mother = family.getPerson(103);
         
-        person1.setFather(father);
-        person1.setMother(mother);
+        per.setFather(father);
+        per.setMother(mother);
         
-        person1 = family.getPerson(101);
-        person1.setFather(father);
-        person1.setMother(mother);
-        
-        person1 = family.getPerson(100);
-        
-        for (Person brother : person1.getBrothers()) {
-            System.out.println("Hermano:" + brother.getFirstName());
-        }
+        per = family.getPerson(101);
+        per.setFather(father);
+        per.setMother(mother);
         
         for (Person person : people) {
             System.out.println("Name: " + person.getFullName());
@@ -77,6 +73,25 @@ public class DemoFamilyTree {
                     System.out.println("            Name: " + person.getMaternalGrandMother().getFullName());
                 }
             }
+      
+            brothers = person.getBrothers();
+            
+            if(brothers.isEmpty() == false){                
+                System.out.println("[Brothers]");
+                for (Person brother : brothers) {
+                    System.out.println("    Name:" + brother.getFullName());
+                }
+            }
+            
+            sisters = person.getSisters();
+            
+            if(sisters.isEmpty() == false){                
+                System.out.println("[Sisters]");
+                for (Person sister : sisters) {
+                    System.out.println("    Name:" + sister.getFullName());
+                }
+            }
+            
             System.out.println("");
         }
     }
