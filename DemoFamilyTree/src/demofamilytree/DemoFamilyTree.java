@@ -57,16 +57,7 @@ public class DemoFamilyTree {
                
         people = family.getPeople();
         
-        // per = family.getPerson(101);
-        // father = family.getPerson(103);
-        // mother = family.getPerson(104);
-        
-        // per.setFather(father);
-        // per.setMother(mother);
-        
-        // per = family.getPerson(102);
-        // per.setFather(father);
-        // per.setMother(mother);
+        //Agregar grados de consaginidad
         
         for (Person person : people) {
             System.out.println("Name: " + person.getFullName());
