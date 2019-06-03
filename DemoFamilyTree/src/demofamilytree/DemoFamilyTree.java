@@ -4,6 +4,9 @@ import demofamilytree.model.Person;
 import demofamilytree.model.Family;
 import java.util.ArrayList;
 import cafsoft.foundation.Data;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author parju
@@ -20,30 +23,50 @@ public class DemoFamilyTree {
         Person mother = null;
         
         Data data = null;
-        String path = "C:\\Users\\parju\\Google Drive\\Prog 2\\ProgII\\Family.txt";
+        String path = "C:\\Users\\parju\\Google Drive\\Prog 2\\ProgII\\Family.csv";
         String text = "";
         
-        family.addPerson(new Person(family, 100, "Salome", "Henao Parra", Person.SEX_FEMALE));
-        family.addPerson(new Person(family, 101, "Juan", "Henao Parra", Person.SEX_MALE));
-        family.addPerson(new Person(family, 102, "Hugo", "Henao Posada", Person.SEX_MALE));
-        family.addPerson(new Person(family, 103, "Maria", "Parra Giraldo", Person.SEX_FEMALE));
-        family.addPerson(new Person(family, 104, "Alberto", "Henao Aguirre", Person.SEX_MALE));
-        family.addPerson(new Person(family, 105, "Elena", "Posada Londoño", Person.SEX_FEMALE));
-        family.addPerson(new Person(family, 106, "Noraldo", "Parra", Person.SEX_MALE));
-        family.addPerson(new Person(family, 107, "Limbania", "Giraldo Castillo", Person.SEX_FEMALE));
+        try{
+            data = new Data(path);
+            data.read(path);
+            text = data.toText();
+        } catch (IOException ex) {
+            Logger.getLogger(DemoFamilyTree.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String[] personsCrude = text.split("\n");
+        String[] persons = new String[personsCrude.length-1];
+        System.arraycopy(personsCrude, 1, persons, 0, personsCrude.length-1);
         
+        int id = 0, idF = 0, idM = 0;
+        String fN = "", lN = "", s = "";
+//      idF = Integer.parseInt(person.split(", ")[4]);
+//      idM = Integer.parseInt(person.split(", ")[5]);            
+        
+        for (String person : persons) {
+            id = Integer.parseInt(person.split(", ")[0]);
+            fN = person.split(", ")[1];
+            lN = person.split(", ")[2];
+            s = person.split(", ")[3];
+                                   
+            if("M".equals(s)){
+                family.addPerson(new Person(family, id, fN, lN, Person.SEX_MALE));
+            }else{
+                family.addPerson(new Person(family, id, fN, lN, Person.SEX_FEMALE));
+            }                        
+        }
+               
         people = family.getPeople();
         
-        per = family.getPerson(100);
-        father = family.getPerson(102);
-        mother = family.getPerson(103);
+        // per = family.getPerson(101);
+        // father = family.getPerson(103);
+        // mother = family.getPerson(104);
         
-        per.setFather(father);
-        per.setMother(mother);
+        // per.setFather(father);
+        // per.setMother(mother);
         
-        per = family.getPerson(101);
-        per.setFather(father);
-        per.setMother(mother);
+        // per = family.getPerson(102);
+        // per.setFather(father);
+        // per.setMother(mother);
         
         for (Person person : people) {
             System.out.println("Name: " + person.getFullName());
