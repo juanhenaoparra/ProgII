@@ -18,7 +18,7 @@ public class DemoFamilyTree {
         ArrayList<Person> people = new ArrayList<>();
         ArrayList<Person> brothers = null;
         ArrayList<Person> sisters = null;
-        Person per = null;
+        Person p = null;
         Person father = null;
         Person mother = null;
         
@@ -38,9 +38,7 @@ public class DemoFamilyTree {
         System.arraycopy(personsCrude, 1, persons, 0, personsCrude.length-1);
         
         int id = 0, idF = 0, idM = 0;
-        String fN = "", lN = "", s = "";
-//      idF = Integer.parseInt(person.split(", ")[4]);
-//      idM = Integer.parseInt(person.split(", ")[5]);            
+        String fN = "", lN = "", s = "";          
         
         for (String person : persons) {
             id = Integer.parseInt(person.split(", ")[0]);
@@ -54,10 +52,28 @@ public class DemoFamilyTree {
                 family.addPerson(new Person(family, id, fN, lN, Person.SEX_FEMALE));
             }                        
         }
+        
+        for (String person : persons) {
+            id = Integer.parseInt(person.split(", ")[0]);
+            idF = Integer.parseInt(person.split(", ")[4]);
+            idM = Integer.parseInt(person.split(",")[5].substring(1));
+            
+            if(idF != -1 || idM != -1){                
+                p = family.getPerson(id);
+                
+                if(idF != -1){
+                    father = family.getPerson(idF);
+                    p.setFather(father);
+                }
+
+                if(idM != -1){
+                    mother = family.getPerson(idM);
+                    p.setMother(mother);
+                }
+            }
+        }
                
         people = family.getPeople();
-        
-        //Agregar grados de consaginidad
         
         for (Person person : people) {
             System.out.println("Name: " + person.getFullName());
