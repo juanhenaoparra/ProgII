@@ -2,9 +2,11 @@ package demofamilytree;
 
 import demofamilytree.model.Person;
 import demofamilytree.model.Family;
+import demofamilytree.storage.Storage;
 import java.util.ArrayList;
 import cafsoft.foundation.Data;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class DemoFamilyTree {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws URISyntaxException {
         Family family = new Family();
         ArrayList<Person> people = new ArrayList<>();
         ArrayList<Person> brothers = null;
@@ -26,53 +28,14 @@ public class DemoFamilyTree {
         String path = "C:\\Users\\parju\\Google Drive\\Prog 2\\ProgII\\Family.csv";
         String text = "";
         
+        Storage storage = new Storage();
+        
         try{
-            data = new Data(path);
-            data.read(path);
-            text = data.toText();
+            family = storage.loadFile(path);
         } catch (IOException ex) {
             Logger.getLogger(DemoFamilyTree.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String[] personsCrude = text.split("\n");
-        String[] persons = new String[personsCrude.length-1];
-        System.arraycopy(personsCrude, 1, persons, 0, personsCrude.length-1);
-        
-        int id = 0, idF = 0, idM = 0;
-        String fN = "", lN = "", s = "";          
-        
-        for (String person : persons) {
-            id = Integer.parseInt(person.split(", ")[0]);
-            fN = person.split(", ")[1];
-            lN = person.split(", ")[2];
-            s = person.split(", ")[3];
-                                   
-            if("M".equals(s)){
-                family.addPerson(new Person(family, id, fN, lN, Person.SEX_MALE));
-            }else{
-                family.addPerson(new Person(family, id, fN, lN, Person.SEX_FEMALE));
-            }                        
-        }
-        
-        for (String person : persons) {
-            id = Integer.parseInt(person.split(", ")[0]);
-            idF = Integer.parseInt(person.split(", ")[4]);
-            idM = Integer.parseInt(person.split(",")[5].substring(1));
-            
-            if(idF != -1 || idM != -1){                
-                p = family.getPerson(id);
-                
-                if(idF != -1){
-                    father = family.getPerson(idF);
-                    p.setFather(father);
-                }
-
-                if(idM != -1){
-                    mother = family.getPerson(idM);
-                    p.setMother(mother);
-                }
-            }
-        }
-               
+                       
         people = family.getPeople();
         
         for (Person person : people) {
