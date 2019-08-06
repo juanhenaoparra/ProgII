@@ -33,8 +33,11 @@ public class ArchivosBinarios {
         
         for(int i = 0; i < filenames.size(); i++){
             Data data = null;
-            String filename = "C:\\Users\\parju\\Google Drive\\Prog 2\\Samples\\" + filenames.get(i);
+            String filename = "C:\\Users\\parju\\Google Drive\\Prog 2\\UnknowFiles\\" + filenames.get(i);
+            String filenameM = "";
             URL url = null;
+            File originFile = null;
+            File urlM = null;
             byte[] bytes = {};
 
             try{
@@ -53,6 +56,11 @@ public class ArchivosBinarios {
                     }
                     
                     if(fileSignature[2].equals(hexFromFile)){
+                        filenameM = "C:\\Users\\parju\\Google Drive\\Prog 2\\UnknowFiles\\" + filenames.get(i) + "." + fileSignature[0];
+                        originFile = new File(filename);
+                        urlM = new File(filenameM);
+                        originFile.renameTo(urlM);
+                        
                         System.out.println("El archivo #" + i + " es del tipo: " + fileSignature[0] + "  (" + fileSignature[1] + ")");
                     }
                     
@@ -94,7 +102,7 @@ public class ArchivosBinarios {
     }
     
     public static ArrayList<String> getFilenames (){
-        String root = "C:\\Users\\parju\\Google Drive\\Prog 2\\Samples";
+        String root = "C:\\Users\\parju\\Google Drive\\Prog 2\\UnknowFiles";
         ArrayList<String> filenames = new ArrayList<>();
         
         File folder = new File(root);
